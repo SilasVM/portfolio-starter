@@ -85,7 +85,25 @@ function renderSkills() {
 // toggle that saves preference to localStorage"
 // ============================================================
 function toggleDarkMode() {
-  // Your implementation here
+  const body = document.body;
+  const isDark = body.getAttribute('data-theme') === 'dark';
+  const newTheme = isDark ? 'light' : 'dark';
+  applyTheme(newTheme);
+}
+
+// Apply a theme and persist preference
+function applyTheme(theme) {
+  const body = document.body;
+  if (theme === 'dark') {
+    body.setAttribute('data-theme', 'dark');
+  } else {
+    body.removeAttribute('data-theme');
+  }
+  try {
+    localStorage.setItem('theme', theme);
+  } catch (e) {
+    // ignore storage errors (e.g., Safari private mode)
+  }
 }
 
 // ============================================================
@@ -103,6 +121,31 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderSkills();
   updateYear();
+  // Initialize theme from localStorage or system preference
+  try {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      applyTheme(saved);
+    } else {
+      // default to dark mode when no preference is saved
+      applyTheme('dark');
+    }
+  } catch (e) {
+    // ignore
+  }
 
-  // TODO: Wire up your dark mode toggle button here once you add it
+  // Wire up dark mode toggle button if it exists (id `dark-toggle` or class `dark-toggle`)
+  const toggleBtn = document.getElementById('dark-toggle') || document.querySelector('.dark-toggle');
+  if (toggleBtn) {
+    // set ARIA pressed state for accessibility
+    if (toggleBtn.tagName && toggleBtn.tagName.toLowerCase() === 'button') {
+      toggleBtn.setAttribute('aria-pressed', document.body.getAttribute('data-theme') === 'dark');
+    }
+    toggleBtn.addEventListener('click', () => {
+      toggleDarkMode();
+      if (toggleBtn.tagName && toggleBtn.tagName.toLowerCase() === 'button') {
+        toggleBtn.setAttribute('aria-pressed', document.body.getAttribute('data-theme') === 'dark');
+      }
+    });
+  }
 });
