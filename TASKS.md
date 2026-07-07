@@ -8,12 +8,12 @@ Work through these phases in order. Each phase builds on the last.
 
 **Goal:** Get your site live and start getting comfortable with Copilot.
 
-- [ ] Fork the repo, clone it, open in VS Code
-- [ ] Enable GitHub Pages (see README)
-- [ ] Push a small change (e.g. update the page `<title>`) and confirm your site redeploys
-- [ ] Open Copilot Chat, select all the code in `index.html`, and run `/explain`
+- [X] Fork the repo, clone it, open in VS Code
+- [X] Enable GitHub Pages (see README)
+- [X] Push a small change (e.g. update the page `<title>`) and confirm your site redeploys
+- [X] Open Copilot Chat, select all the code in `index.html`, and run `/explain`
   - Read through the explanation — does it match what you'd expect?
-- [ ] **Warmup task:** Update the hero section (`index.html`) with your real name and a tagline
+- [X] **Warmup task:** Update the hero section (`index.html`) with your real name and a tagline
   - Try using inline chat (`Cmd+I` / `Ctrl+I`) on the hero text to get Copilot's help writing a bio or tagline
 
 📓 **Log at least 1 prompt** in your `prompt-journal.md` from this phase.
