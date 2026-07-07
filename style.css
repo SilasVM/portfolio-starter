@@ -219,6 +219,16 @@ h2::after {
   font-size: 3rem;
 }
 
+/* Avatar image styling */
+.avatar {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--color-border);
+  display: block;
+}
+
 /* ============================================================
    PROJECTS
    ============================================================ */
