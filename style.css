@@ -3,16 +3,16 @@
    TODO: Try asking Copilot to suggest a color palette for you.
    ============================================================ */
 :root {
-  --color-bg: #ffffff;
-  --color-bg-alt: #f5f7fa;
-  --color-text: #1a1a2e;
-  --color-text-muted: #555577;
-  --color-accent: #4f46e5;
-  --color-accent-hover: #4338ca;
-  --color-border: #e2e8f0;
+  --color-bg: #050505;
+  --color-bg-alt: #0d1a12;
+  --color-text: #e6f5e6;
+  --color-text-muted: #9ccb99;
+  --color-accent: #1f6f1e;
+  --color-accent-hover: #4ca64c;
+  --color-border: #11331a;
   --font-main: 'Segoe UI', system-ui, sans-serif;
   --radius: 10px;
-  --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow: 0 3px 18px rgba(0, 0, 0, 0.35);
   --transition: 0.2s ease;
 }
 
@@ -100,11 +100,19 @@ a:hover {
   justify-content: center;
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-alt) 100%);
+  /* background image behind hero text (only this section) */
+  background-image: linear-gradient(rgba(5,5,5,0.45), rgba(5,5,5,0.45)), url("photos/Starred (3365).jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: var(--color-text);
 }
 
 .hero-content {
   max-width: 700px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {

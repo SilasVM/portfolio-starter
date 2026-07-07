@@ -19,23 +19,23 @@ For each entry, note:
 ## Phase 1 — Setup & Orientation
 
 ### Entry 1
-- **Feature/task:** 
-- **Copilot feature used:** 
-- **Prompt:**
+- **Feature/task: updating tagline** 
+- **Copilot feature used: inline chat** 
+- **Prompt: Could you help me update this tagline? I'm a masters student researching federated machine learning who's also interested in teaching/mentoring, continued open source work, software engineering, and project management.**
   > 
-- **Result:** 
-- **What I changed or did next:** 
+- **Result: It gave me a revised tagline that aligned with the interests I gave it.** 
+- **What I changed or did next: I accepted the change** 
 
 ---
 
 ## Phase 2 — Guided Tasks
 
 ### Entry 2 — About section
-- **Copilot feature used:** 
-- **Prompt:**
+- **Copilot feature used: Copilot chat** 
+- **Prompt: Could you add a folder titled "photos" where I can place a file titled "headshot.jpg" that will be referenced here to be displayed?**
   > 
-- **Result:** 
-- **What I changed or did next:** 
+- **Result: the folder was created, and the text in index.html was updated to reference a future photo called headshot.jpg. It also addded a readme to the photos folder which I kept** 
+- **What I changed or did next: I added my photo to the folder so it could be referenced and displayed** 
 
 ---
 

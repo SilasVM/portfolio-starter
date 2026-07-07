@@ -6,10 +6,10 @@
 // ============================================================
 const projects = [
   {
-    title: "Project One",
-    description: "A short description of what this project does and why you built it.",
-    tags: ["Python", "Flask"],
-    github: "https://github.com/yourusername/project-one",
+    title: "Finance AI Suite",
+    description: "A Python-based finance application suite with a Flask GUI, package installer, and AI-powered tools for financial analysis.",
+    tags: ["Python", "Flask", "AI", "Finance"],
+    github: "https://github.com/SilasVM/Finance-AI-Suite",
     demo: null,
   },
   {
