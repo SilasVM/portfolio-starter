@@ -223,10 +223,13 @@ h2::after {
 .avatar {
   width: 160px;
   height: 160px;
+  max-width: 160px;
+  max-height: 160px;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid var(--color-border);
   display: block;
+  overflow: hidden;
 }
 
 /* ============================================================
