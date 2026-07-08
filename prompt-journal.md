@@ -40,54 +40,62 @@ For each entry, note:
 ---
 
 ### Entry 3 — Projects
-- **Copilot feature used:** 
-- **Prompt:**
+- **Copilot feature used: copilot chat** 
+- **Prompt: I have this finance suite I'd like to add to my projects by modifying #file:script.js. Here's the GitHub link: https://github.com/SilasVM/Finance-AI-Suite**
   > 
-- **Result:** 
-- **What I changed or did next:** 
+- **Result: copilot successfully added my project by filling in the information from my repo into the card.** 
+- **What I changed or did next: I accepted the change. Everytrhing including the description of my project was accurate.** 
 
 ---
 
 ### Entry 4 — Dark mode
-- **Copilot feature used:** 
-- **Prompt:**
+- **Copilot feature used: Inline chat** 
+- **Prompt:Implement this dark mode toggle. It should switch a data-theme='dark' attribute on the <body> and save the preference to localStorage so it persists on reload. Add a toggleable button**
   > 
-- **Result:** 
-- **What I changed or did next:** 
+- **Result:It added a button but did not have any difference when pressed.** 
+- **What I changed or did next: I accepted the changes and prompted it to create a light mode.** 
 
 ---
 
 ### Entry 5 — Responsive layout
-- **Copilot feature used:** 
-- **Prompt:**
+- **Copilot feature used: Copilot chat** 
+- **Prompt: Improve the responsive styles in this CSS file for screens under 600px. The nav links should stack or hide, the hero text should be smaller, and the projects grid should be single-column. Make sure the image isn't squished or stretched on smaller screens, allow any excess image parts to not be shown, but remain centered**
   > 
-- **Result:** 
-- **What I changed or did next:** 
+- **Result: Copilot modified style.css to include code on how to handle image resizing for smaller screens and how to handle the display of the project cards.** 
+- **What I changed or did next: I confirmed the webpage responded as desired in the integrated browser and accepted the changes.** 
 
 ---
 
 ## Phase 3 — Independent Feature
 
-**Feature I chose:** 
+**Feature I chose: Skill proficiencies.** 
 
 ### Entry 6
-- **Copilot feature used:** 
-- **Prompt:**
-  > 
-- **Result:** 
-- **What I changed or did next:** 
+- **Copilot feature used: Skill Ratings** 
+- **Prompt: Next, I want to make it so thath when people hover over my skills they see a proficiency rating out of 5. It should also display the following skills:
+GitHub
+C++
+HTML
+Python
+Java
+JavaScript
+PHP
+SQL**
+  >
+- **Result: It successfully made it so that when I hover over a skill, a star rating appears.** 
+- **What I changed or did next: I had to manually give the star ratings to be reflective of my actual skill level, then I accepted the change.** 
 
 ### Entry 7
 - **Copilot feature used:** 
 - **Prompt:**
-  > 
+  >
 - **Result:** 
 - **What I changed or did next:** 
 
 ### Entry 8 — A prompt that didn't work well
 - **Copilot feature used:** 
 - **What I asked:**
-  > 
+  >
 - **What went wrong:** 
 - **How I fixed it (revised prompt or manual edit):** 
 

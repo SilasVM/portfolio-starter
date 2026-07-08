@@ -33,11 +33,18 @@ const projects = [
 // TODO: Replace with your actual skills.
 // Ask Copilot to help format this list based on your resume.
 // ============================================================
+// Skills with proficiency rating (1-5)
 const skills = [
-  "Python", "JavaScript", "Java", "C",
-  "HTML & CSS", "Git & GitHub",
-  "React", "Node.js",
-  "SQL", "Linux",
+  { name: "Git", rating: 5 },
+
+  { name: "GitHub", rating: 5 },
+  { name: "C++", rating: 4 },
+  { name: "HTML", rating: 4 },
+  { name: "Python", rating: 4 },
+  { name: "Java", rating: 3 },
+  { name: "JavaScript", rating: 3 },
+  { name: "PHP", rating: 3 },
+  { name: "SQL", rating: 3 },
 ];
 
 // ============================================================
@@ -73,8 +80,25 @@ function renderSkills() {
   const container = document.getElementById("skills-container");
   if (!container) return;
 
+  // Helper to build a star string like ★★★☆☆
+  function stars(rating) {
+    const filled = '★'.repeat(Math.max(0, Math.min(5, rating)));
+    const empty = '☆'.repeat(5 - Math.max(0, Math.min(5, rating)));
+    return filled + empty;
+  }
+
   container.innerHTML = skills
-    .map((skill) => `<span class="skill-badge">${skill}</span>`)
+    .map((skill) => {
+      const label = skill.name;
+      const rating = skill.rating || 0;
+      const starStr = stars(rating);
+      return `
+        <span class="skill-badge" tabindex="0" aria-label="${label} proficiency ${rating} of 5">
+          ${label}
+          <span class="skill-proficiency" aria-hidden="true">${starStr} ${rating}/5</span>
+        </span>
+      `;
+    })
     .join("");
 }
 

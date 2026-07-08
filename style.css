@@ -363,6 +363,39 @@ h2::after {
   /* TODO: Ask Copilot to add an emoji or icon prefix to each badge */
 }
 
+/* Tooltip/proficiency that appears on hover or focus */
+.skill-badge {
+  position: relative;
+  cursor: default;
+}
+
+.skill-badge .skill-proficiency {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease, transform 160ms ease;
+  transform-origin: bottom center;
+}
+
+.skill-badge:hover .skill-proficiency,
+.skill-badge:focus .skill-proficiency,
+.skill-badge:focus-within .skill-proficiency {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(-4px);
+}
+
 /* ============================================================
    CONTACT
    ============================================================ */
