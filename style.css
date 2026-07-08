@@ -411,6 +411,75 @@ h2::after {
   gap: 1rem;
 }
 
+/* Visual separation under footer */
+.contact-links {
+  justify-content: center;
+  align-items: center;
+  /* smaller gap so icons sit nearer the footer without expanding sections */
+  margin-top: 0.1rem;
+  padding: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* Screen-reader-only text */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Circular icon buttons */
+.contact-icon {
+  padding: 0;
+  width: 56px;
+  height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+
+.contact-icon .icon {
+  display: inline-block;
+}
+
+.contact-icon:hover,
+.contact-icon:focus {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+/* Ensure inline SVG icons inherit color and size nicely */
+.contact-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: currentColor;
+}
+
+@media (max-width: 480px) {
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.05rem;
+  }
+}
+
 /* ============================================================
    FOOTER
    ============================================================ */

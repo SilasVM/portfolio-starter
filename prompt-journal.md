@@ -87,17 +87,17 @@ SQL**
 
 ### Entry 7
 - **Copilot feature used:** 
-- **Prompt:**
+- **Prompts:**
   >
 - **Result:** 
 - **What I changed or did next:** 
 
 ### Entry 8 — A prompt that didn't work well
-- **Copilot feature used:** 
-- **What I asked:**
+- **Copilot feature used: Copilot chat ** 
+- **Prompts: My email me button is permanently colored. Could you fix that? Also could you move my contact buttons down to the bottom of the screen **
   >
-- **What went wrong:** 
-- **How I fixed it (revised prompt or manual edit):** 
+- **What went wrong: Copilot made it so that my contact buttons are always visible at the same position at the bottom of the screen. ** 
+- **How I fixed it (revised prompt or manual edit): "Make the contact info stay at the bottom of the page, not the screen. Undo any previous, unnecessary changes." I also had to manually adjust the height of the icons until I was satisfied. ** 
 
 ---
 
