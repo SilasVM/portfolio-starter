@@ -404,3 +404,61 @@ footer {
     height: 100px;
   }
 }
+
+/* Improved mobile styles for small screens under 600px */
+@media (max-width: 600px) {
+  /* Nav: hide links to avoid crowding (stacking would need additional JS/menu) */
+  .nav-links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Hero: reduce height, padding and scale down text */
+  .hero {
+    min-height: 60vh;
+    padding: 2.5rem 1rem;
+  }
+
+  .hero::before {
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+    line-height: 1.15;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Projects: single column for narrow screens */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Ensure images keep aspect, centered cropping instead of stretching */
+  img, .avatar, .project-card img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+  }
+
+  /* If project images are placed inside cards, crop gracefully */
+  .project-card {
+    overflow: hidden;
+  }
+
+  /* Slightly smaller section padding to fit mobile view */
+  .section, .section-alt {
+    padding: 2.5rem 1rem;
+  }
+}
