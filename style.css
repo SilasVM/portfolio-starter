@@ -123,6 +123,66 @@ a:hover {
   color: var(--color-accent);
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 0.8rem 0.45rem 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: background-color 240ms ease, border-color 240ms ease, transform 240ms ease, box-shadow 240ms ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}
+
+.theme-toggle__track {
+  position: relative;
+  width: 3rem;
+  height: 1.65rem;
+  border-radius: 999px;
+  background: var(--color-border);
+  transition: background-color 240ms ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle__thumb {
+  position: absolute;
+  top: 50%;
+  left: 0.18rem;
+  width: 1.28rem;
+  height: 1.28rem;
+  border-radius: 50%;
+  background: var(--color-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-50%);
+  transition: transform 240ms ease, background-color 240ms ease;
+}
+
+.theme-toggle__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.theme-toggle[aria-checked="true"] .theme-toggle__track {
+  background: var(--color-accent);
+}
+
+.theme-toggle[aria-checked="true"] .theme-toggle__thumb {
+  transform: translate(1.35rem, -50%);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 /* TODO: The nav isn't responsive on mobile yet.
    Ask Copilot: "Make this navbar collapse into a hamburger menu on small screens" */
 

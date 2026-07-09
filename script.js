@@ -136,13 +136,13 @@ function applyTheme(theme) {
 function setThemeToggleIcon(theme) {
   const btn = document.getElementById('dark-toggle');
   if (!btn) return;
-  // Show sun for light mode, moon for dark mode
-  if (theme === 'dark') {
-    btn.textContent = '🌙';
-    btn.title = 'Switch to light mode';
-  } else {
-    btn.textContent = '☀️';
-    btn.title = 'Switch to dark mode';
+  const isDark = theme === 'dark';
+  btn.setAttribute('aria-checked', String(isDark));
+  btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+  const label = btn.querySelector('.theme-toggle__label');
+  if (label) {
+    label.textContent = isDark ? 'Dark' : 'Light';
   }
 }
 
@@ -254,14 +254,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Wire up dark mode toggle button if it exists (id `dark-toggle` or class `dark-toggle`)
   const toggleBtn = document.getElementById('dark-toggle') || document.querySelector('.dark-toggle');
   if (toggleBtn) {
-    // set ARIA pressed state for accessibility
+    // set switch state for accessibility
     if (toggleBtn.tagName && toggleBtn.tagName.toLowerCase() === 'button') {
-      toggleBtn.setAttribute('aria-pressed', document.body.getAttribute('data-theme') === 'dark');
+      toggleBtn.setAttribute('aria-checked', document.body.getAttribute('data-theme') === 'dark');
     }
     toggleBtn.addEventListener('click', () => {
       toggleDarkMode();
       if (toggleBtn.tagName && toggleBtn.tagName.toLowerCase() === 'button') {
-        toggleBtn.setAttribute('aria-pressed', document.body.getAttribute('data-theme') === 'dark');
+        toggleBtn.setAttribute('aria-checked', document.body.getAttribute('data-theme') === 'dark');
       }
     });
   }

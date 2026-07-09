@@ -19,7 +19,12 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <!-- Dark mode toggle -->
-      <button id="dark-toggle" class="btn btn-outline" aria-pressed="false" title="Toggle dark mode">🌙</button>
+      <button id="dark-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span class="theme-toggle__track" aria-hidden="true">
+          <span class="theme-toggle__thumb"></span>
+        </span>
+        <span class="theme-toggle__label" aria-hidden="true">Dark</span>
+      </button>
     </nav>
 
     <!-- ============================================================
