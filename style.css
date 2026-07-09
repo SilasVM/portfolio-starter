@@ -3,34 +3,48 @@
    TODO: Try asking Copilot to suggest a color palette for you.
    ============================================================ */
 :root {
-  /* Light (warm beige) theme as default */
-  --color-bg: #f5efe0; /* warm beige */
-  --color-bg-alt: #efe6d2;
-  --color-text: #2b2a26; /* dark warm text */
-  --color-text-muted: #7a6957;
-  --color-accent: #ff6a00; /* vibrant orange */
-  --color-accent-hover: #ff8a33;
-  --color-border: #e7d9c7;
-  --hero-overlay: rgba(255,255,255,0.6);
-  --hero-image: url("photos/Starred (3483).jpg");
+  /* Pastel light theme derived from the dark palette */
+  --color-bg: #f7fbff; /* very light sky tint */
+  --color-bg-alt: #edf7fb; /* pale aqua panel */
+  --color-text: #243042; /* softened navy text */
+  --color-text-muted: #6e7b8f;
+  --color-accent: #63bfd6; /* pastel cyan accent */
+  --color-accent-hover: #8fcfe0; /* brighter pastel hover */
+  --color-border: #d9eaf3;
+  --hero-overlay: rgba(255,255,255,0.68);
+  --hero-image: url("photos/Starred (3601).jpg");
   --font-main: 'Segoe UI', system-ui, sans-serif;
   --radius: 10px;
-  --shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow: 0 6px 22px rgba(99,191,214,0.1);
   --transition: 0.2s ease;
 }
 
 /* Dark theme (applied with data-theme="dark") - keeps the previous dark green palette */
 [data-theme="dark"] {
-  --color-bg: #050505;
-  --color-bg-alt: #0d1a12;
-  --color-text: #e6f5e6;
-  --color-text-muted: #9ccb99;
-  --color-accent: #1f6f1e;
-  --color-accent-hover: #4ca64c;
-  --color-border: #11331a;
-  --hero-overlay: rgba(5,5,5,0.45);
+  /* Colorful dark theme */
+  --color-bg: #071129; /* deep navy */
+  --color-bg-alt: #0b2233; /* tealish deep */
+  --color-text: #e6f7ff; /* pale cyan text */
+  --color-text-muted: #9dd1d8;
+  --color-accent: #06b6d4; /* bright cyan accent */
+  --color-accent-hover: #7c3aed; /* violet hover for contrast */
+  --color-border: #0e2b3a;
+  --hero-overlay: rgba(2,8,18,0.5);
   --hero-image: url("photos/Starred (4040).jpg");
-  --shadow: 0 3px 18px rgba(0, 0, 0, 0.35);
+  --shadow: 0 6px 24px rgba(6,182,212,0.06);
+}
+
+/* Make light mode sections and general colors match dark theme style, but use a pastel green accent */
+body:not([data-theme="dark"]) {
+  --color-bg: #f7fbff; /* very light sky tint */
+  --color-bg-alt: #edf7fb; /* pale aqua panel */
+  --color-text: #243042; /* softened navy text */
+  --color-text-muted: #6e7b8f;
+  --color-accent: #63bfd6; /* pastel cyan accent */
+  --color-accent-hover: #8fcfe0; /* brighter pastel hover */
+  --color-border: #d9eaf3;
+  --hero-overlay: rgba(255,255,255,0.68);
+  --shadow: 0 6px 24px rgba(99,191,214,0.1);
 }
 
 /* TODO: Add a [data-theme="dark"] block here for dark mode.
@@ -152,20 +166,41 @@ a:hover {
 }
 
 .hero-content {
-  max-width: 700px;
+  width: min(100%, 1100px);
+  max-width: none;
   position: relative;
   z-index: 1;
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 6vw, 5rem);
   font-weight: 800;
   margin-bottom: 1rem;
   line-height: 1.2;
+  width: min(100%, 1100px);
+  margin-inline: auto;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .highlight {
   color: var(--color-accent);
+}
+
+@keyframes caret-blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 0.12em;
+  height: 1em;
+  margin-left: 0.08em;
+  border-right: 0.12em solid var(--color-accent);
+  vertical-align: -0.08em;
+  animation: caret-blink 0.8s step-end infinite;
 }
 
 .hero-subtitle {
@@ -221,6 +256,53 @@ a:hover {
 .section-alt > * {
   max-width: 1000px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Rounded corners and textured overlay for all non-hero sections */
+.section,
+.section-alt {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.section > *,
+.section-alt > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Apply a single vertical texture that spans all wrapped sections */
+.texture-wrap {
+  position: relative;
+}
+
+.texture-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("photos/daytexture.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  /* make vertical image span the full height of the wrapper */
+  background-size: auto 100%;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.texture-wrap > .section,
+.texture-wrap > .section-alt {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark theme uses a different texture and slightly stronger overlay */
+[data-theme="dark"] .texture-wrap::before {
+  background-image: url("photos/nighttexture.jpg");
+  opacity: 0.08;
 }
 
 h2 {
@@ -399,10 +481,22 @@ h2::after {
 /* ============================================================
    CONTACT
    ============================================================ */
+#contact h2 {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+#contact h2::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .contact-intro {
   color: var(--color-text-muted);
   margin-bottom: 2rem;
   font-size: 1.1rem;
+  text-align: center;
 }
 
 .contact-links {
@@ -532,6 +626,10 @@ footer {
   .hero h1 {
     font-size: 1.6rem;
     line-height: 1.15;
+    width: auto;
+    margin-inline: 0;
+    text-align: center;
+    white-space: normal;
   }
 
   .hero-subtitle {

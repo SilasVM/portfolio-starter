@@ -128,6 +128,22 @@ function applyTheme(theme) {
   } catch (e) {
     // ignore storage errors (e.g., Safari private mode)
   }
+  // Update toggle icon whenever theme is applied
+  setThemeToggleIcon(theme);
+}
+
+// Update the theme toggle button icon to match current theme
+function setThemeToggleIcon(theme) {
+  const btn = document.getElementById('dark-toggle');
+  if (!btn) return;
+  // Show sun for light mode, moon for dark mode
+  if (theme === 'dark') {
+    btn.textContent = '🌙';
+    btn.title = 'Switch to light mode';
+  } else {
+    btn.textContent = '☀️';
+    btn.title = 'Switch to dark mode';
+  }
 }
 
 // ============================================================
@@ -138,6 +154,82 @@ function updateYear() {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
 
+function startHeroTypewriter() {
+  const headline = document.querySelector(".hero h1");
+  if (!headline) return;
+
+  const isMobile = window.matchMedia("(max-width: 600px)").matches;
+  const parts = [
+    { text: "Hi, I'm ", className: null },
+    { text: "Silas Morgan", className: "highlight" },
+    { text: " 🕴🏿", className: null },
+  ];
+  const fullText = parts.map((part) => part.text).join("");
+
+  if (isMobile) {
+    headline.innerHTML = `Hi, I'm <span class="highlight">Silas Morgan</span> 🕴🏿`;
+    headline.setAttribute("aria-label", fullText);
+    return;
+  }
+
+  const typingDelay = 85;
+  const eraseDelay = 45;
+  const pauseAfterFull = 10000;
+  const pauseAfterErase = 300;
+  const totalChars = fullText.length;
+  let timeoutId = null;
+  let resizeTimeoutId = null;
+
+  function render(charCount) {
+    let remaining = charCount;
+    const html = parts
+      .map((part) => {
+        if (remaining <= 0) return "";
+        const visibleText = part.text.slice(0, Math.min(remaining, part.text.length));
+        remaining -= visibleText.length;
+        return part.className ? `<span class="${part.className}">${visibleText}</span>` : visibleText;
+      })
+      .join("");
+
+    headline.setAttribute("aria-label", fullText);
+    headline.innerHTML = `${html}<span class="typing-cursor" aria-hidden="true"></span>`;
+  }
+
+  function type(charCount) {
+    render(charCount);
+    if (charCount < totalChars) {
+      timeoutId = window.setTimeout(() => type(charCount + 1), typingDelay);
+      return;
+    }
+
+    timeoutId = window.setTimeout(() => erase(totalChars), pauseAfterFull);
+  }
+
+  function erase(charCount) {
+    render(charCount);
+    if (charCount > 0) {
+      timeoutId = window.setTimeout(() => erase(charCount - 1), eraseDelay);
+      return;
+    }
+
+    timeoutId = window.setTimeout(() => type(0), pauseAfterErase);
+  }
+
+  if (timeoutId) {
+    window.clearTimeout(timeoutId);
+  }
+
+  window.addEventListener("resize", () => {
+    window.clearTimeout(resizeTimeoutId);
+    resizeTimeoutId = window.setTimeout(() => {
+      window.clearTimeout(timeoutId);
+      startHeroTypewriter();
+    }, 150);
+  }, { once: true });
+
+  type(0);
+}
+
 // ============================================================
 // INIT
 // ============================================================
@@ -145,6 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderSkills();
   updateYear();
+  startHeroTypewriter();
   // Initialize theme from localStorage or system preference
   try {
     const saved = localStorage.getItem('theme');
